@@ -5,6 +5,8 @@ import cookielib
 import urllib
 from config import *
 import json
+from sendmail import sendmail
+
 
 def savefile(filename,content):
     file = open(filename,'wb')
@@ -46,6 +48,7 @@ def login():
     else:
         print "error occur"
     savefile('statistics.html',opener.open(DATAURL).read())
+    sendmail('statistics.html')
 
 if __name__ == '__main__':
     login()
